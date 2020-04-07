@@ -42,14 +42,18 @@ EOF
 crond
 nginx
 #实时检测并同步文件
-#实时检测并同步文件
 inotifywait -mrq --timefmt '%d/%m/%y %H:%M' --format '%T|%e|%w%f' -e modify,delete,create,attrib /blog/source/_posts |  while read file 
 do  
     if [[ $file == *.md ]]
     then
-       INO_FILE=$(echo $file | awk -F '|' '{print $3}')
-       sed -i "s#(_v_images#(/_v_images#g" "$INO_FILE"
-       hexo d -g 
+        INO_EVENT=$(echo $file | awk -F '|' '{print $2}')
+        if [[ $INO_EVENT =~ 'CREATE' ]] || [[ $INO_EVENT =~ 'MODIFY' ]] || [[ $INO_EVENT =~ 'CLOSE_WRITE' ]]
+        then
+            INO_FILE=$(echo $file | awk -F '|' '{print $3}')
+            sleep 2
+            sed -i "s#(_v_images#(/_v_images#g" "$INO_FILE"
+        fi
+        hexo d -g 
     elif [[ $file == *.png ]] || [[ $file == *.jpg ]]
     then
         rsync -avz /blog/source/_posts/_v_images /blog/public/ --delete
