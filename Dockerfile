@@ -7,6 +7,7 @@ ADD ./blog/package.json /blog/package.json
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories && apk update && apk add --no-cache openssl openssh-client coreutils bind-tools curl socat tzdata oath-toolkit-oathtool tar git nginx inotify-tools rsync \
     && curl https://get.acme.sh | sh \
     && npm config set unsafe-perm true \
+    && npm config set registry https://registry.npm.taobao.org \
     && npm install -g hexo-cli \
     && cd /blog && npm install
 #添加Nginx Gzip功能
