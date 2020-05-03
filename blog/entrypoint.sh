@@ -53,7 +53,7 @@ do
             sleep 2
             sed -i "s#(_v_images#(/_v_images#g" "$INO_FILE"
         fi
-        hexo d -g 
+        hexo g -d 
     elif [[ $file == *.png ]] || [[ $file == *.jpg ]]
     then
         rsync -avz /blog/source/_posts/_v_images /blog/public/ --delete
