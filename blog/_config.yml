@@ -6,16 +6,21 @@
 title: 欧巴云
 subtitle: 'DevOps文化 & SRE实战分享平台'
 description: '余心所善，九死未悔'
-keywords: Kubernetes,DevOps,SRE,HCI,CI,CD,持续集成,持续发布,超融合,运维开发
+keywords: Kubernetes,DevOps,SRE,HCI,CI,CD,Docker,KVM,Proxmox,ovirt,Jenkins,Gitlab,Python,PowerShell,Bash Shell,Golang,CEPH,持续集成,持续发布,超融合,运维开发
 author: 木子
 language: zh-CN
 timezone: 'Asia/Shanghai'
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://oubayun.com
+url: https://oubayun.com
 root: /
-permalink: :year/:month/:day/:title/
+permalink: :translate_title.html
+translate_title:
+  translate_way: google
+  #是否启用翻译代理
+  is_need_proxy: false
+  proxy_url: http://localhost:1080
 permalink_defaults:
 pretty_urls:
   trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
@@ -111,3 +116,11 @@ symbols_count_time:
   time: true #是否统计阅读时长
   total_symbols: true #是否统计总字数
   total_time: true #是否统计总阅读时长
+# 自动生成sitemap
+sitemap:
+path: sitemap.xml
+# 添加允许外链的地址
+nofollow:
+    enable: true
+    exclude:
+    -  https://docs.xin-lai.com/

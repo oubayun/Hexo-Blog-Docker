@@ -34,7 +34,14 @@
 * 修正inotifywait监控文件多事件下Markdown文档多次构建部署问题；
 * 新增基于vNote编写的Markdown文档sftp同步以后，_v_images自动替换路径为绝对路径功能；
 
-## 计划功能实现说明 v1.3
+## 2020年5月3日主要功能说明 v1.3
+* 本次更新主要针对SEO优化；
+* 添加sitemap功能；
+* 添加robots.txt；
+* 优化文件链接地址，自动翻译成拼音，并修改连接地址为https://域名/文章拼音名.html；
+* 添加nofollow功能，并排除友情链接；
+
+## 计划功能实现说明 v1.4
 * 新增基于Let's encrypt ACME DNS证书自动生成功能（阿里云）；
 * 新增基于阿里云、腾讯云 DNSAPI实现A记录解析自动添加；
 
