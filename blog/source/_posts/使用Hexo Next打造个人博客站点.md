@@ -1,22 +1,29 @@
 ---
-文章声明：此文基于木子实操撰写。 \
+title: 使用Hexo Next打造个人博客站点
+date: 2020-03-28 12:30:00
+tags: [Hexo Next,Hexo Blog,Alpine Hexo Blog Docker]
+categories: IT杂类
+copyright: true
+top: 0
+---
+---
+文章声明：此文基于木子实操撰写 \
 生产环境：node:13.10.1-alpine3.11 + Hexo v4.2.0 + NexT.Gemini v7.7.2 \
 论证耗时：24h \
 撰文耗时：1h \
 校文耗时：30m \
-问题关键字：Alpine Hexo Next Docker
+问题关键字：Hexo Next,Hexo Blog,Alpine Hexo Blog Docker
 ---
-
-# 业务实现逻辑
-![](_v_images/20200401162243616_1850925931.png)
-
 # 镜像说明
 此Docker镜像由[欧巴云](https://www.oubayun.com)基于node:13.10.1-alpine3.11 + Hexo v4.2.0 + NexT.Gemini v7.7.2打造。采用ACME dnsChallenge功能进行Let's encrypt免费证书申请，并使用定时任务实现证书自动续期。通过Nginx进行站点发布，在提高此博客系统并发访问能力的同时，通过 [SSL Labs](https://www.ssllabs.com/) A+级SSL/TLS证书认证。
 <!-- more -->
-![](_v_images/20200401162824748_1757398107.png)
+![](/_v_images/20200401162824748_1757398107.png)
+
+# 业务实现逻辑
+![](/_v_images/20200401162243616_1850925931.png)
 
 # 站点主界面
-![](_v_images/20200401162243616_1850925932.png)
+![](/_v_images/20200401162243616_1850925932.png)
 
 # 版本说明
 ## 2020年3月27日主要功能说明 v1.0
