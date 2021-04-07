@@ -39,7 +39,7 @@ top: 0
 
 ## 2020年4月4日主要功能说明 v1.2
 * 修正inotifywait监控文件多事件下Markdown文档多次构建部署问题；
-* 新增基于vNote编写的Markdown文档sftp同步以后，_v_images自动替换路径为绝对路径功能；
+* 新增基于vNote编写的Markdown文档sftp同步以后，\_v\_images自动替换路径为绝对路径功能；
 
 ## 2020年5月3日主要功能说明 v1.3
 * 本次更新主要针对SEO优化；
@@ -48,12 +48,21 @@ top: 0
 * 优化文章链接地址，自动翻译标题成拼音，并修改链接地址为: https://域名/文章拼音名.html；
 * 添加nofollow功能，并排除友情链接；
 
-## 计划功能实现说明 v1.4
-* 新增基于Let's encrypt ACME DNS证书自动生成功能（阿里云）；
-* 新增基于阿里云、腾讯云 DNSAPI实现A记录解析自动添加；
+## 2021年4月7日主要功能说明 v1.4
+* 添加纯http模式docker镜像，采用traefik反向代理提供amce证书管理与http跳转https
+
+## 计划功能实现说明 v1.5
+* ~~新增基于Let's encrypt ACME DNS证书自动生成功能（阿里云）；~~
+* ~~新增基于阿里云、腾讯云 DNSAPI实现A记录解析自动添加；~~
 
 # 部署方式
-纯Docker方式部署如下：
+HTTP Docker方式部署如下：
+```bash
+docker run -p 80:80 -v /mdfiles:/blog/source/_posts -e \
+"domainname=oubayun.com" oubayun/hexo-blog:latest
+```
+
+HTTPS Docker方式部署如下：
 ```bash
 docker run -p 80:80 -p 443:443 -v /mdfiles:/blog/source/_posts -e \
 "domainname=oubayun.com" -e "DP_Id=xxxx" -e "DP_Key=xxxx" \
