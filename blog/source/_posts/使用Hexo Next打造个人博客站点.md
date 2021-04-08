@@ -48,8 +48,9 @@ top: 0
 * 优化文章链接地址，自动翻译标题成拼音，并修改链接地址为: https://域名/文章拼音名.html；
 * 添加nofollow功能，并排除友情链接；
 
-## 2021年4月7日主要功能说明 v1.4
-* 添加纯http模式docker镜像，采用traefik反向代理提供amce证书管理与http跳转https
+## 2021年4月4日主要功能说明 v1.4
+* 添加纯http模式Docker镜像，采用Traefik反向代理提供ACME证书管理与http跳转https，不再通过Docker本身提供ACME功能；
+* 优化字体，优先采用【Sarasa Mono SC】等宽字体，提高代码可读性；
 
 ## 计划功能实现说明 v1.5
 * ~~新增基于Let's encrypt ACME DNS证书自动生成功能（阿里云）；~~
@@ -58,13 +59,13 @@ top: 0
 # 部署方式
 HTTP Docker方式部署如下：
 ```bash
-docker run -p 80:80 -v /mdfiles:/blog/source/_posts -e \
+Docker run -p 80:80 -v /mdfiles:/blog/source/_posts -e \
 "domainname=oubayun.com" oubayun/hexo-blog:latest
 ```
 
 HTTPS Docker方式部署如下：
 ```bash
-docker run -p 80:80 -p 443:443 -v /mdfiles:/blog/source/_posts -e \
+Docker run -p 80:80 -p 443:443 -v /mdfiles:/blog/source/_posts -e \
 "domainname=oubayun.com" -e "DP_Id=xxxx" -e "DP_Key=xxxx" \
 oubayun/hexo-blog:latest
 ```
