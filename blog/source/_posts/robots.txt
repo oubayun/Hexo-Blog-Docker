@@ -4,7 +4,8 @@ Allow: /archives/
 Allow: /categories/
 Allow: /about/
 Allow: /tags/
-Sitemap: https://oubayun.com/sitemap.xml
+Sitemap: https://domainname/sitemap.xml
+Sitemap: https://domainname/baidusitemap.xml
 
 Disallow: /images/
 Disallow: /js/

@@ -13,7 +13,7 @@ timezone: 'Asia/Shanghai'
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://oubayun.com
+url: https://domainname
 root: /
 permalink: :translate_title.html
 translate_title:
@@ -103,22 +103,35 @@ theme: next
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: ''
+- type: baidu_url_submitter
+
 #文件搜索功能
 search:
   path: search.xml
   field: post
   format: html
   limit: 10000
+
 #文章字数统计插件
 symbols_count_time:
   symbols: true #是否统计字数
   time: true #是否统计阅读时长
   total_symbols: true #是否统计总字数
   total_time: true #是否统计总阅读时长
+
 # 自动生成sitemap
 sitemap:
-path: sitemap.xml
+  path: sitemap.xml
+baidusitemap:
+  path: baidusitemap.xml
+
+# 主动推送
+baidu_url_submit:
+  count: 20                # 提交最新的多少个链接
+  host: domainname    # 在百度站长平台中添加的域名
+  token: baidutoken      # 秘钥
+  path: baidu_urls.txt   # 文本文档的地址，新链接会保存在此文本文档里
+
 # 添加允许外链的地址
 nofollow:
     enable: true

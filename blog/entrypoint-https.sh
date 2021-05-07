@@ -41,6 +41,11 @@ server {
 EOF
 crond
 nginx
+# 替换域名
+sed -i "s/domainname/$domainname/g" /blog/public/robots.txt
+sed -i "s/domainname/$domainname/g" /blog/_config.yml
+# 设置百度收录Token
+sed -i "s/baidutoken/$baidutoken/g" /blog/_config.yml
 #实时检测并同步文件
 inotifywait -mrq --timefmt '%d/%m/%y %H:%M' --format '%T|%e|%w%f' -e modify,delete,create,attrib /blog/source/_posts |  while read file 
 do  
