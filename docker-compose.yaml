@@ -3,14 +3,32 @@ services:
   oubayun:
     image: oubayun/hexo-blog:latest
     environment:
+      # 设置网站域名，不要带www，脚本会自动添加
       domainname: oubayun.com
+      # 百度 SEO 主动推送授权token
+      baidutoken: xxx
+      # Bing SEO 主动推送授权Token
+      bingtoken: xxx
+      # 百度网站访问量统计ID
+      baiduanalytics: xxx
+    # 容器名称
     container_name: oubayun
     restart: always
     ports:
       - 80
     volumes:
-      - /root/DockerConfig/oubayun/mdfiles:/blog/source/_posts
+      # 博文存放目录
+      - /oubayun/mdfiles:/blog/source/_posts
+      # Google SEO 主动推送授权文件
+      - /oubayun/google_service_account.json:/blog/google_service_account.json
+      # 公共配置文件
+      - /oubayun/_config.yml:/blog/_config.yml
+      # 主题配置文件
+      - /oubayun/themes_config.yml:/blog/themes/next/_config.yml
+      # 关于我们 页面
+      - /oubayun/index.md:/blog/source/about/index.md
     labels:
+      # Traefik 反向代理的一些配置，包括证书自动申请等
       - "traefik.enable=true"
       - "traefik.http.routers.oubayun.rule=Host(`oubayun.com`) || Host(`www.oubayun.com`)"
       - "traefik.http.routers.oubayun.entryPoints=websecure"

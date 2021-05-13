@@ -24,10 +24,5 @@ ADD ./blog /blog
 ENV TZ Asia/Shanghai
 # 设置当前工作目录
 WORKDIR /blog
-# 生成静态页
-RUN hexo clean && hexo g -d
-# 首次添加图片文件
-ADD ./blog/source/_posts/_v_images /blog/public/_v_images
-ADD ./blog/source/_posts/robots.txt /blog/public/
 # 使用hexo-server托管静态文件
 ENTRYPOINT ["./entrypoint.sh"]

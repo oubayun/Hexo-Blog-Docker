@@ -13,7 +13,7 @@ timezone: 'Asia/Shanghai'
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://domainname
+url: https://www.domainname
 root: /
 permalink: :translate_title.html
 translate_title:
@@ -103,7 +103,9 @@ theme: next
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-- type: baidu_url_submitter
+- type: cjh_google_url_submitter
+- type: cjh_bing_url_submitter
+- type: cjh_baidu_url_submitter
 
 #文件搜索功能
 search:
@@ -126,14 +128,28 @@ baidusitemap:
   path: baidusitemap.xml
 
 # 主动推送
-baidu_url_submit:
-  count: 20                # 提交最新的多少个链接
-  host: domainname    # 在百度站长平台中添加的域名
-  token: baidutoken      # 秘钥
-  path: baidu_urls.txt   # 文本文档的地址，新链接会保存在此文本文档里
+hexo_submit_urls_to_search_engine:
+  submit_condition: count #链接被提交的条件，可选值：count | period 现仅支持count
+  count: 10 # 提交最新的10个链接
+  period: 900 # 提交修改时间在 900 秒内的链接
+  google: 1 # 是否向Google提交，可选值：1 | 0（0：否；1：是）
+  bing: 1 # 是否向bing提交，可选值：1 | 0（0：否；1：是）
+  baidu: 1 # 是否向baidu提交，可选值：1 | 0（0：否；1：是）
+  txt_path: submit_urls.txt ## 文本文档名， 需要推送的链接会保存在此文本文档里
+  baidu_host: https://www.domainname ## 在百度站长平台中注册的域名
+  baidu_token: baidutoken ## 请注意这是您的秘钥， 所以请不要把它直接发布在公众仓库里!
+  bing_host: https://www.domainname ## 在bing站长平台中注册的域名
+  bing_token: bingtoken ## 请注意这是您的秘钥， 所以请不要把它直接发布在公众仓库里!
+  google_host: https://www.domainname ## 在google站长平台中注册的域名
+  google_key_file: google_service_account.json #存放google key的json文件，放于网站根目录（与hexo _config.yml文件位置相同），请不要把json文件内容直接发布在公众仓库里!
+  google_proxy: 0 # 向谷歌提交网址所使用的系统 http 代理，填 0 不使用
+  replace: 0  # 是否替换链接中的部分字符串，可选值：1 | 0（0：否；1：是）
+  find_what: https://www.domainname
+  replace_with: https://www.domainname
 
 # 添加允许外链的地址
 nofollow:
     enable: true
     exclude:
-    -  https://docs.xin-lai.com/
+    - https://docs.xin-lai.com
+    - https://www.rockylinux.cn
